@@ -1,9 +1,7 @@
 package server;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
-import java.util.Date;
 
 public class ChatClient extends Thread {
 
@@ -25,10 +23,17 @@ public class ChatClient extends Thread {
     }
 
     private void handleClientSocket() throws IOException, InterruptedException {
+        InputStream inputStream = clientSocket.getInputStream();
         OutputStream outputStream = clientSocket.getOutputStream();
-        for (int i = 0; i < 10; i++) {
-            outputStream.write(("Time now is " + new Date() + "\n").getBytes());
-            Thread.sleep(1000);
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        String line;
+        while ( (line = reader.readLine()) != null) {
+            if ("exit".equalsIgnoreCase(line)) {
+                break;
+            }
+            String msg = "Message from client: " + line + "\n";
+            outputStream.write(msg.getBytes());
         }
         clientSocket.close();
         System.out.println("Closing connection from " + clientSocket);
