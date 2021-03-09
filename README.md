@@ -17,17 +17,23 @@ Vi har opdelt projektet i de fire "emner" der kræves for at chatseveren virker 
 Har "leget" med et eksempel der benytter BufferedReader (InputStream/OutputStream) til at modtage en besked via en konsol og sender beskeden tilbage til samme bruger. Skal finde en løsning der i stedet sender beskeden fra én bruger til en anden gennem severen. Har ikke helt fornemmelse af SEND# kommandoen, som beskrevet i opgaven, og skal hente hjælp til dette.
 Pt. virker koden ikke med den eksisterende kode i Main, så dette skal også flettes sammen med connect delen af opgaven.
 
+<<<<<<< HEAD
 **Andreas - Connect**
 Har kigget på en connect-funktion for klienterne så de kan forbinde til serveren og anvende serverens funktioner. Indtil videre er connect-metoden skrevet som en basal TCP-forbindelse, som kun kan tage en klient af gangen. Skal kigge på threads så der kan være flere klienter på samme tid.
 
+=======
+>>>>>>> Aggerjr
 **August - Close**
 Har påbegyndt arbejdet der lukker serveren ved kommandoen CLOSE# - det virker men den kaster ikke den exception jeg gerne vil have den til endnu.  Derudover mangler der på nuværende tidspunkt både en client klasse og client handler så der har ikke været noget sted at kalde socket.close();
 Til sidst er forarbejdet lavet til ikke at lukke når den modtager CONNECT# og SEND#
 
+<<<<<<< HEAD
 **Mathias - Online**
 Har lavet en string, hvor der bliver tilføjet navne i et loop af aktive klienter (online brugere) "ONLINE#navn1,navn2". Efter denne string er bygget, sendes den til alle de ovennævne aktive klienter via message metoden.
 
 
+=======
+>>>>>>> Aggerjr
 Dag 2 (Tirsdag d. 09-03-2021)
 
 Dag 3 (Onsdag d. 10-03-2021)

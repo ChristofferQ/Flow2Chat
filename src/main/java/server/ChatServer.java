@@ -1,9 +1,9 @@
 package server;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import com.sun.xml.internal.bind.v2.TODO;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -11,6 +11,33 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ChatServer {
+    private boolean commandInput(String msg, PrintWriter pw) {
+        String[] parts = msg.split("#");
+        if (parts.length == 1) {
+            if (parts[0].equals("CLOSE")) {
+                pw.println("CLOSE#");
+            }
+            else {
+                pw.println("Unknown request - must obey protocol");
+            }
+            return false;
+        } else if (parts.length == 2) {
+            String token = parts[0];
+            String argument = parts[1];  //Værdi efter #-tegnet
+            switch (token) {
+                case "CONNECT":
+                    break;
+                case "SEND":
+                    break;
+                default:
+                    pw.println("Invalid input - closing connection...");
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    //Lav client handler med socket og kald socket.close()
 
     private List<Client> clients = new ArrayList<>(); // or Set<> or Map<> ?
 
