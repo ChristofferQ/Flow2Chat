@@ -12,6 +12,7 @@ import java.net.UnknownHostException;
 
 public class ChatServer {
 
+    private List<Client> clients = new ArrayList<>(); // or Set<> or Map<> ?
 
     //Call server with arguments like this: 0.0.0.0 8088 logfile.log
     public static void main(String[] args) throws UnknownHostException {
@@ -43,5 +44,22 @@ public class ChatServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+}
+
+    private void online() {
+        // Create string
+        String message = "ONLINE#";
+        for (Client client : clients)
+            message += client.name + ",";
+        message = message.replaceAll(", $", "");
+
+        // Send string to all clients
+        for (Client client : clients)
+            message(Client.address, message);
+    }
+
+    private void message(String sender, String message) {
+
     }
 }
