@@ -33,14 +33,14 @@ public class ChatServer {
 
     private void online() {
         // Create string
-        String clientNames;
+        String message = "ONLINE#";
         for (Client client : clients)
-            clientNames += client.name + ",";
-        clientNames = clientNames.replaceAll(", $", "");
+            message += client.name + ",";
+        message = message.replaceAll(", $", "");
 
         // Send string to all clients
         for (Client client : clients)
-            message(Client.address, clientNames);
+            message(Client.address, message);
     }
 
     private void message(String sender, String message) {
